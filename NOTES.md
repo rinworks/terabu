@@ -6,7 +6,7 @@ The "disk summary" is mainly the names and MD5 hash of all the files on a drive
 volume. It is a building block for disk content validation and file duplicate
 detection.
 
-###Considerations
+_Considerations_
 - Incrementally create, update and validate
 - MD5 hash of the entire content
 - CRC32 checksum of a portion of the content - for quick partial file integrity checks
@@ -17,14 +17,14 @@ detection.
 - Option to record history [No, but could use Github]
 - Resists truncation / undetected partial scan
 
-###Design Alternatives
+_Design Alternatives_
 - Summary is a single file | multiple files | multiple directories and files
 - CSV | JSON | custom format
 - Interpret special metadata files like starred lists and file metadata
 - Flat or hierarchical representation of path names
 - Progress in files or tracked externally - or bit of both
 
-###Decisions
+_Decisions_
 - Summary is only JSON - suck into MongoDB and/or program, less custom parsing. CSV is too brittle.
 - Each summary generation session generates a single file, logically appending to
   the previous file. Signature files are ordered lexicographically, not by
@@ -79,7 +79,7 @@ the summary files will be located in the root directory
 Example: A drive with volume label `BEAN` will have its summary information
 files stored under `BEAN_tbu_summaries`. The `_tbu_summaries` suffix will
 always be in lower case.  The label part will typically match the case of the volume
-label. If the label is empty, the directory becomes `_tbu_summary`. The `tbu` part of the suffix
+label. If the label is empty, the directory becomes `_tbu_summaries`. The `tbu` part of the suffix
 is an acronym for "terabyte back up" and is inserted to reduce the chance of a conflict with
 an existing root-level directory.
 
@@ -93,4 +93,4 @@ summary directory `BEAN_tbu_summaries` will be: `BEAN_summary0001.json`, `BEAN_s
 The volume label is prefixed to each summary file so that is less chance of summary files across
 drives being confused with each other, and these files will become 'invalid' if the summary
 directory is copied to another volume with a different label. The general guideline for terabu
-volumes is for every backed-up drive to have a unique volume name.
+volumes is for every backed-up drive to have a unique volume label.

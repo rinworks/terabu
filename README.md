@@ -2,10 +2,12 @@
 Terabyte backup to on-premise storage with option for longer term backup to the cloud.
 
 ## Scenarios
-- Ingest and backup, at a rapid rate (100+ megabytes per second)  thousands of images and videos that make up a single session of a 3D photo shoot from multiple angles,
-  such as by the "CMRig" project (<https://github.com/rinworks/rig>). Be able to retrieve this data by using database queries and full-text search.
-- Backup a messy back
-
+- Rapidly ingest and backup thousands of images and videos that make up a
+  single session of a 3D photo shoot from multiple angles, such as by the
+  "CMRig" project (<https://github.com/rinworks/rig>). Be able to retrieve this
+  data by using database queries and full-text search.
+- Backup a messy backlog of hard drives and CF cards collectively containing
+  terabytes of images and videos with many duplicates.
 
 ## Desired Features
 - Ingest terabytes of data at speeds approaching hard-drive or SSD-drive speeds.
@@ -20,4 +22,4 @@ Terabyte backup to on-premise storage with option for longer term backup to the 
 - Support generation of smart summaries of large collections of related media - such as a single photo shoot or video shoot. Some suggestions for summaries:
 	- Collages made from images and key frames in videos.
 	- Text generated through object recognition in images and videos.
-	- Smaller/condensed version of a small sub set of images and videos and other forms of bulk data
+	- Smaller/condensed version of a small subset of images and videos and other forms of bulk data
