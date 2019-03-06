@@ -1,5 +1,48 @@
 # Terabu Design and Implementation Notes
 
+## 2019 March 6A - JMJ: Local backup story
+_Considerations_
+- Individual bare drives are not great to handle - to keep inserting/removing from docking stations,
+  so consider a set of drives in an enclosure as a unit.
+- Any drive can fail at any time. Also there are unsubstantiated reports that suggest that drives
+  manufactured in the same batch may fail at the same time (I find this hard to believe, but
+  the guidance is that if possible to use drives from different batches or manufacturers)
+- HA is not important for the main scenario - which is managing vast quantities of images and 
+  videos coming in in bursts. But we're not running a high available service.
+- There should be a backup at a remote location - fire or (more likely )theft are distinct
+  possibilities.
+- Given that drives may be stolen, they should be encrypted. Remote drives should also be encrypted
+  so that the entity that houses that drive is not responsible for data being stolen. If that remote
+  location is a secure location (bank) then there is no need for encryption.
+- Ransomware is another threat. Copies should mostly live their lives disconnected.
+- Drive capacity keeps increasing, so drives should be allowed to be incrementally replaced.
+- Primary drives can potentially be higher speed as the back up drives are only used for backup.
+
+
+_Decisions_
+- Three drive banks. Each bank is a physical enclosure, such as "Mediasonic USB
+  3.1 4 Bay 3.5” SATA Hard Drive Enclosure", holding 4 drives. One bank is primary and the other
+  two are secondary. This designation is done manually and does not change - if necessary a drive
+  or enclosure is replaced to keep everything working.
+- Each drive in a bank has a 'sister' drive of the exact same capacity in the other two banks.
+  The three drives that form a 'sisterhood' are called _NAME_0, _NAME_1, and _NAME_2, with
+  _NAME_0 being the primary drive. They are single-volume drives with volume label set to their
+  name. The backed-up data in each drive is stored under the top-level
+  folder _NAME_. _NAME_ has exactly 4 letters, all caps. It is kept small to keep overall path
+  lengths from getting too long.
+
+
+Following is a possible assignment
+
+Primary|Secondary1|Secondary2|Capacity
+-------|----------|----------|--------
+FOAM0  |FOAM1     |FOAM2     |1TB
+MOAT0  |MOAT1     |MOAT2     |2TB
+ALPS0  |ALPS1     |ALPS2     |3TB
+OPTS0  |OPTS1     |OPTS2     |6TB
+
+
+
 ## 2019 March 2A - JMJ: Terabu disk summary representation options and decisions
 
 The "disk summary" is mainly the names and MD5 hash of all the files on a drive
