@@ -1,4 +1,4 @@
-# terabu
+# volman
 Terabyte backup to on-premise storage with option for longer term backup to the cloud.
 
 ## Scenarios
