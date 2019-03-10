@@ -1,5 +1,18 @@
 # Terabu Design and Implementation Notes
 
+## 2019 March 6B - JMJ: Project Structure
+Following guidelines in the _Serious Python_ book:
+```
+terabu/
+    docs/
+        conf.py
+        quickstart.rst
+	index.rst
+    terabu/
+        __init__.py
+        tests/
+	data/
+```
 ## 2019 March 6A - JMJ: Local backup story
 _Considerations_
 - Individual bare drives are not great to handle - to keep inserting/removing from docking stations,
@@ -28,7 +41,7 @@ _Decisions_
   The three drives that form a 'sisterhood' are called _NAME_0, _NAME_1, and _NAME_2, with
   _NAME_0 being the primary drive. They are single-volume drives with volume label set to their
   name. The backed-up data in each drive is stored under the top-level
-  folder _NAME_. _NAME_ has exactly 4 letters, all caps. It is kept small to keep overall path
+  folder _NAME_. _NAME_ has at most 4 letters, all caps. It is kept small to keep overall path
   lengths from getting too long.
 
 
@@ -36,10 +49,10 @@ Following is a possible assignment
 
 Primary|Secondary1|Secondary2|Capacity
 -------|----------|----------|--------
-FOAM0  |FOAM1     |FOAM2     |1TB
-MOAT0  |MOAT1     |MOAT2     |2TB
-ALPS0  |ALPS1     |ALPS2     |3TB
-OPTS0  |OPTS1     |OPTS2     |6TB
+BAT0   |BAT1      |BAT2      |1TB
+BLUE0  |BLUE1     |BLUE2     |2TB
+DOG0   |DOG1      |DOG2      |3TB
+CAT0   |CAT1      |CAT2      |6TB
 
 
 
