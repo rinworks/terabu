@@ -1,6 +1,6 @@
-# Terabu Design and Implementation Notes
+# Volman Design and Implementation Notes
 
-## 2019 March 2A - JMJ: Terabu disk summary representation options and decisions
+## 2019 March 2A - JMJ: Volman disk summary representation options and decisions
 
 The "disk summary" is mainly the names and MD5 hash of all the files on a drive
 volume. It is a building block for disk content validation and file duplicate
@@ -92,5 +92,5 @@ summary directory `BEAN_tbu_summaries` will be: `BEAN_summary0001.json`, `BEAN_s
 
 The volume label is prefixed to each summary file so that is less chance of summary files across
 drives being confused with each other, and these files will become 'invalid' if the summary
-directory is copied to another volume with a different label. The general guideline for terabu
+directory is copied to another volume with a different label. The general guideline for volman
 volumes is for every backed-up drive to have a unique volume label.
